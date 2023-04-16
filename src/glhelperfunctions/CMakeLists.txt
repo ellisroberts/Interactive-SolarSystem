@@ -1,0 +1,3 @@
+add_library(glhelperfunctions glhelperfunctions.cpp)
+
+target_link_libraries(glhelperfunctions PUBLIC shader)
