@@ -1,5 +1,5 @@
 #include "glhelperfunctions/glhelperfunctions.h"
-#include <catch2/catch.hpp>
+#include "catch.hpp"
 #include <exception>
 #include <filesystem>
 
@@ -16,5 +16,5 @@ TEST_CASE("Succeeds and parses correctly if file is found", "[GLHelperFunctions]
 
 TEST_CASE("Fails if file is not found", "[GLHelperFunctions]")
 {
-	REQUIRE_THROWS_AS(GLHelper::GetSourceCode("WrongPath"), std::filesystem::filesystem_error);
+    REQUIRE_THROWS_AS(GLHelper::GetSourceCode("WrongPath"), std::filesystem::filesystem_error);
 }

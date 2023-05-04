@@ -10,8 +10,10 @@ target_link_libraries(shadertest PRIVATE glhelperfunctions)
 target_link_libraries(shadertest PRIVATE Catch2::Catch2)
 target_link_libraries(shadertest PRIVATE window)
 
+set(TEST_DIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/shadertestdir")
+
 add_custom_command(TARGET shadertest POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/ShaderTestFiles ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/shader)
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/ShaderTestFiles "${TEST_DIR}")
                    
-catch_discover_tests(shadertest WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/shader)
+catch_discover_tests(shadertest WORKING_DIRECTORY "${TEST_DIR}")
 

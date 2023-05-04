@@ -1,7 +1,7 @@
 #include "glhelperfunctions/glhelperfunctions.h"
 #include "shader/shaderprogram.h"
 
-#include <catch2/catch.hpp>
+#include "catch.hpp"
 #include <glm/glm.hpp>
 #include <exception>
 #include <filesystem>

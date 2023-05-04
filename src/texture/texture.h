@@ -6,8 +6,8 @@
 class Texture
 {
 public:
-	Texture(GLenum InternalFormat);
-	//Load the texture from KTX2 container file
+    Texture(GLenum InternalFormat);
+    //Load the texture from KTX2 container file
     void LoadContainer(std::string KTX2File);
     //Return the Pixel Data for comparison
     TexelData GetPixelData();
@@ -22,11 +22,11 @@ public:
     GLuint GetWidth() { return m_Width; }
     GLuint GetHeight() { return m_Height; }
     GLuint GetDepth() { return m_Depth; }
-	~Texture();
+    ~Texture();
 private:
-	GLenum m_Type;
-	GLuint m_MipMapLevels;
-	GLuint m_Width;
-	GLuint m_Height;
-	GLuint m_Depth;
+    GLenum m_Type;
+    GLuint m_MipMapLevels;
+    GLuint m_Width;
+    GLuint m_Height;
+    GLuint m_Depth;
 };

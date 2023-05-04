@@ -1,11 +1,13 @@
 #include "glhelperfunctions/glhelperfunctions.h"
 #include "shader/shaderobject.h"
 
-#include <catch2/catch.hpp>
+#include "catch.hpp"
 #include <glm/glm.hpp>
 #include <exception>
 #include <filesystem>
 #include <utility>
+
+#include <iostream>
 
 #define BUILD_SHADER(type, code) GLHelper::MakeShaderObject(type, code)
 #define GET_CODE(path) GLHelper::GetSourceCode(path)

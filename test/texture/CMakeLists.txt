@@ -1,0 +1,6 @@
+add_executable(texturetest texturecontainertest.cpp)
+
+target_link_libraries(texturetest PRIVATE ktxcontainer)
+target_link_libraries(texturetest PRIVATE Catch2::Catch2WithMain)
+
+catch_discover_tests(texturetest WORKING_DIRECTORY)

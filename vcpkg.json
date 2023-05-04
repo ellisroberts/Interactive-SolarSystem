@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "solar-system",
+  "version": "1.0",
+  "dependencies": ["glew", "glfw3", "catch2", "ktx", "boost-format"]
+}
