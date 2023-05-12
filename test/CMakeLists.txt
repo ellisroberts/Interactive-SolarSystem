@@ -1,3 +1,2 @@
 add_subdirectory(glhelperfunc)
-add_subdirectory(shader)
-add_subdirectory(texture)
+add_subdirectory(gltests)

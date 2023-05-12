@@ -3,20 +3,25 @@
 #include <algorithm>
 #include <type_traits>
 #include <regex>
+#include <stdexcept>
 
 ShaderProgram::ShaderProgram()
 {
     m_ProgramHandle = glCreateProgram();
+    if (!m_ProgramHandle)
+        throw std::runtime_error {"Could not create shader program handle"};
 }
 
 ShaderProgram::ShaderProgram(ShaderProgram &&Other) :
     m_ProgramHandle {Other.m_ProgramHandle},
-    m_AttachedShaderHandles {std::move(Other.m_AttachedShaderHandles)},
     m_IsLinked {Other.m_IsLinked},
-    m_LinkAttempted {Other.m_LinkAttempted}
+    m_LinkAttempted {Other.m_LinkAttempted},
+    m_AttachedShaderHandles {std::move(Other.m_AttachedShaderHandles)}
 {
     Other.m_ProgramHandle = 0;
-    assert(m_ProgramHandle);
+    Other.m_IsLinked = GL_FALSE;
+    Other.m_LinkAttempted = false;
+    assert(Other.IsMoved());
 }
 
 ShaderProgram::~ShaderProgram()

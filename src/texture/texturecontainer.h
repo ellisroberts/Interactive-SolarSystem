@@ -1,3 +1,5 @@
+#pragma once
+
 #include <GL/glew.h>
 #include <string>
 
@@ -6,7 +8,7 @@ class TextureContainer
     public:
     //Generate an OpenGL texture object
     virtual void GenerateGLTexture(GLuint &TextureOut,
-                                   GLuint &TargetOut) = 0;
+                                   GLuint &TargetOut) const = 0;
     ~TextureContainer() = default;
     protected:
     TextureContainer() = default;

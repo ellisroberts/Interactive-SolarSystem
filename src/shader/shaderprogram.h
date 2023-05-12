@@ -12,6 +12,7 @@
 #include <iostream>
 
 //Invariants : if shader handle is non zero, it is unique to this instance
+// Moved-From-State : IsMoved must return true
 class ShaderProgram
 {
 public:
@@ -32,6 +33,8 @@ public:
     GLint IsLinked() const {return m_IsLinked;}
     bool IsLinkAttempted() const {return m_LinkAttempted;}
     GLuint GetProgramHandle() const {return m_ProgramHandle;}
+    bool IsMoved() {return !m_ProgramHandle && !m_IsLinked && !m_LinkAttempted && m_AttachedShaderHandles.empty();}
+    
 
 private:
     //Pre-Condition: Shader Object Must be compiled

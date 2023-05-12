@@ -5,7 +5,7 @@
 #include <iostream>
 
 void KTXTextureContainer::GenerateGLTexture(GLuint &TextureOut,
-                                            GLenum &TargetOut)
+                                            GLenum &TargetOut) const
 {
     GLenum glError = GL_NO_ERROR;
     auto result = ktxTexture_GLUpload(m_pContainer.get(), &TextureOut, &TargetOut, &glError);

@@ -8,7 +8,7 @@
 
 #define GET_KTX_TEXTURE(KtxPath) [](std::filesystem::path const& KtxFilePath) \
                                      { \
-                                         ktxTexture *texture; \
+                                         ktxTexture *texture = nullptr; \
                                          if (ktxTexture_CreateFromNamedFile(KtxFilePath.c_str(), \
                                                                             KTX_TEXTURE_CREATE_NO_FLAGS, \
                                                                             &texture) != KTX_SUCCESS) \
@@ -18,18 +18,17 @@
                                          return texture; \
                                       }(KtxPath)
 
-//Invariant: Object will always container a valid pointer to a ktx structure
 class KTXTextureContainer final : public TextureContainer
 {
 public:
-    KTXTextureContainer(std::filesystem::path const& KtxFilePath)
-                       : m_AssociatedFileName {KtxFilePath},
-                         m_pContainer {GET_KTX_TEXTURE(KtxFilePath),
-                                       [](ktxTexture *Text){ktxTexture_Destroy(Text);}}
+    explicit KTXTextureContainer(std::filesystem::path const& KtxFilePath)
+                                 : m_AssociatedFileName {KtxFilePath},
+                                   m_pContainer {GET_KTX_TEXTURE(KtxFilePath),
+                                                 [](ktxTexture *Text){ktxTexture_Destroy(Text);}}
     {
     }
     void GenerateGLTexture(GLuint &TextureOut,
-                           GLuint &TargetOut) override;
+                           GLuint &TargetOut) const override;
     //Delete copy and move operations
     KTXTextureContainer(KTXTextureContainer&& Other) = delete;
     KTXTextureContainer& operator=(KTXTextureContainer&& Other) = delete;

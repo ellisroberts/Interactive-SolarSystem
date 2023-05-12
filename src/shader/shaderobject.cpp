@@ -1,23 +1,28 @@
 #include "shaderobject.h"
 
 #include <iostream>
+#include <stdexcept>
 
 ShaderObject::ShaderObject(GLuint ShaderType) : m_ShaderType {ShaderType}
 {
     m_ShaderHandle = glCreateShader(m_ShaderType);
-    assert(m_ShaderHandle);
+    if (!m_ShaderHandle)
+        throw std::runtime_error {"Could not create shader handle"};
 }
 
 ShaderObject::ShaderObject(ShaderObject &&Other) :
     m_ShaderHandle {Other.m_ShaderHandle},
-    m_SourceCode {std::move(Other.m_SourceCode)},
+    m_ShaderType {Other.m_ShaderType},
+    m_IsAttached {Other.m_IsAttached},
     m_IsCompiled {Other.m_IsCompiled},
     m_CompileAttempted {Other.m_CompileAttempted},
-    m_IsAttached {Other.m_IsAttached},
-    m_ShaderType {Other.m_ShaderType}
+    m_SourceCode {std::move(Other.m_SourceCode)}
 {
     Other.m_ShaderHandle = 0;
-    assert(m_ShaderHandle);
+    Other.m_IsAttached = false;
+    Other.m_IsCompiled = GL_FALSE;
+    Other.m_CompileAttempted = false;
+    assert(Other.IsMoved());
 }
 
 ShaderObject::~ShaderObject()

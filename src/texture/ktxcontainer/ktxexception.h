@@ -10,7 +10,7 @@ class KTXException : public std::runtime_error
     public:
 
     KTXException(std::filesystem::path const& Path, KTX_error_code KtxError, GLenum GlError)
-                 : std::runtime_error {boost::str(boost::format("Operation on Ktx file %1 failed with KTX error code %2 GL Error Code %3") % Path
+                 : std::runtime_error {boost::str(boost::format("Operation on Ktx file %1% failed with KTX error code %2% GL Error Code %3%") % Path
                                                                                                                                             % KtxError
                                                                                                                                             % GlError)},
                    m_Path {Path},
