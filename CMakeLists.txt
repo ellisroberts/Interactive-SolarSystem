@@ -17,7 +17,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 include_directories(AFTER src)
 
 #CACHE variables
-option(Debug_Mode "DebugMode" ON)
+set(CMAKE_BUILD_TYPE "Release" CACHE STRING "")
 
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     include(CTest)
