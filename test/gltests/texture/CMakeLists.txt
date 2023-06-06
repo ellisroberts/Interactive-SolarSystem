@@ -10,7 +10,7 @@ target_link_libraries(texturetest
                       PRIVATE ktxcontainer
                       PRIVATE gltexture
                       PRIVATE window
-                      PRIVATE Catch2::Catch2WithMain)
+                      PRIVATE Catch2::Catch2)
 
 add_custom_command(TARGET texturetest POST_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${TEST_DIR}"
                                                  COMMAND "${TOKTX_COMMAND}" --2d --target_type "RGB" "${TEST_DIR}/test.ktx" "${CMAKE_CURRENT_SOURCE_DIR}/images/earth.jpg"
