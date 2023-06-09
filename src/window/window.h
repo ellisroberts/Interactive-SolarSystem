@@ -20,7 +20,7 @@ struct DeleteWindow
 class Window
 {
 public:
-	Window(GLuint Height, GLuint Width, std::string const& Name);
+	explicit Window(GLuint Height, GLuint Width, std::string const& Name);
 	void MakeContextCurrent();
 	Window(Window &&Other) = default;
 	Window& operator=(Window &&Other) = default;

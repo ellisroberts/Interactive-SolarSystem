@@ -12,7 +12,7 @@ class ShaderObject
 {
 public:
     //PreCondition: There must be an active opengl context
-    ShaderObject(GLuint ShaderType);
+    explicit ShaderObject(GLuint ShaderType);
     //Pre-Condition : Other must have valid handle
     ShaderObject(ShaderObject &&Other);
     ShaderObject& operator=(ShaderObject &&Other) = delete;

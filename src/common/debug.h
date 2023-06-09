@@ -1,12 +1,39 @@
 #pragma once
 
 #ifdef DEBUG_BUILD
+#include <exception>
+#include <GL/glew.h>
 #include <iostream>
 #include <string>
-#endif
+namespace Debug
+{
+    template <typename... Types>
+    inline void DebugPrint(Types&& ...Args)
+    {
+        (std::cout << ... << std::forward<Types> (Args)) << std::endl;
+    }
 
-#ifdef DEBUG_BUILD
-#define DebugPrint(out) std::cout << out << std::endl
+    inline void CheckGLError()
+    {
+        auto error = glGetError();
+        if (error != GL_NO_ERROR)
+        {
+            throw std::runtime_error {"OpenGL call failed"};
+        }
+    }
+}
 #else
-#define DebugPrint(out) ((void) 0)
+namespace Debug
+{
+    template <typename... Types>
+    inline void DebugPrint(Types&& ...Args)
+    {
+        ((void) 0);
+    }
+
+    inline void CheckGLError()
+    {
+        ((void) 0);
+    }
+}
 #endif 

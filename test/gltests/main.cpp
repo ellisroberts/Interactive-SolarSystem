@@ -14,7 +14,7 @@ int main( int argc, char* argv[] )
     {        
         // setup context
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-        Window window(640, 480, "My Window");
+        Window window(640, 480, std::string{"My Window"});
         window.MakeContextCurrent();
         
         // initialize glew
