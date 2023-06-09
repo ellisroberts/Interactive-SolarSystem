@@ -1,6 +1,6 @@
-add_library(GLObject INTERFACE)
+add_library(GLObject OBJECT vertex.cpp)
 
 target_include_directories(GLObject INTERFACE .)
 target_link_libraries(GLObject
-                      INTERFACE GLEW::GLEW
-                      INTERFACE Debug)
+                      PUBLIC GLEW::GLEW
+                      PUBLIC Debug)

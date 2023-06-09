@@ -2,6 +2,7 @@
 #include "debug.h"
 
 #include <algorithm>
+#include <cassert>
 #include <GL/glew.h>
 #include <vector>
 

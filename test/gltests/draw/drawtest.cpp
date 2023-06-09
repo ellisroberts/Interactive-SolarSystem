@@ -39,7 +39,7 @@ TEST_CASE("Ensure the VAO is initialized with attributes enabled", "[VAO]")
     std::vector<GLuint> input{0, 1, 2, 3};
     GLObject::BindParams params1 {0, 2, GL_UNSIGNED_INT, true, 2, 0};
     GLObject::BindParams params2 {1, 2, GL_UNSIGNED_INT, true, 2, 2};
-    vao.BindBuffer(GLObject::CreateBufferObject(input, GL_ARRAY_BUFFER, GL_STATIC_DRAW), {params1, params2});
+    vao.AddVertexBuffer(GLObject::CreateBufferObject(input, GL_ARRAY_BUFFER, GL_STATIC_DRAW), {params1, params2});
     
     glBindVertexArray(vao.GetHandle());
     REQUIRE(GetBindParamsFromAttribute(0) == params1);
