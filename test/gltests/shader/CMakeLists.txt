@@ -1,4 +1,4 @@
-add_executable(shadertest "${GL_MAIN_PATH}" shaderobjecttest.cpp shadertest.cpp)
+add_executable(shadertest shaderobjecttest.cpp shadertest.cpp)
 
 target_compile_definitions(shadertest PUBLIC WRONG_VERT_SHADER="vertexshaderwrong.txt")
 target_compile_definitions(shadertest PUBLIC CORRECT_VERT_SHADER="vertshader1.txt")
@@ -9,7 +9,7 @@ target_compile_definitions(shadertest PUBLIC LINK_TEST_FRAG_SHADER="shaderfragun
 target_link_libraries(shadertest
                       PRIVATE glhelperfunctions
                       PRIVATE Catch2::Catch2
-                      PRIVATE window)
+                      PRIVATE glmain)
 
 set(TEST_DIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/shadertestdir")
 

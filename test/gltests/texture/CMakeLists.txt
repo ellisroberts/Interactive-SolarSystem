@@ -1,4 +1,4 @@
-add_executable(texturetest "${GL_MAIN_PATH}" texturecontainertest.cpp texturetest.cpp)
+add_executable(texturetest texturecontainertest.cpp texturetest.cpp)
 
 set(TEST_DIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/texturetestdir")
 set(TOKTX_COMMAND "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/tools/ktx/toktx")
@@ -16,7 +16,7 @@ target_compile_definitions(texturetest PUBLIC KTX_EXCEPTION_FILE="${TEST_DIR}/fa
 target_link_libraries(texturetest
                       PRIVATE ktxcontainer
                       PRIVATE gltexture
-                      PRIVATE window
+                      PRIVATE glmain
                       PRIVATE Catch2::Catch2)
 
 catch_discover_tests(texturetest WORKING_DIRECTORY "${TEST_DIR}")

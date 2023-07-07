@@ -8,5 +8,6 @@
                    {"name" : "ktx",
                     "features" : ["tools"]
                    },
-                   "boost-format"]
+                   "boost-format",
+                   "assimp"]
 }

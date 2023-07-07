@@ -1,6 +1,7 @@
 add_subdirectory(shader)
 add_subdirectory(glhelperfunctions)
 add_subdirectory(common)
-add_subdirectory(window)
+add_subdirectory(glfwhelper)
 add_subdirectory(texture)
 add_subdirectory(draw)
+add_subdirectory(main)
